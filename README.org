@@ -1,0 +1,15 @@
+* siddharthist/nur
+
+# [![Build Status](https://travis-ci.com/siddharthist/nur-packages.svg?branch=master)](https://travis-ci.com/siddharthist/nur-packages)
+# [![Cachix Cache](https://img.shields.io/badge/cachix-<YOUR_CACHIX_CACHE_NAME>-blue.svg)](https://<YOUR_CACHIX_CACHE_NAME>.cachix.org)/
+
+A [NUR](https://github.com/nix-community/NUR).
+
+** outline
+
+ - [[./default.nix]]: A normal NUR =default.nix=
+ - [[./nixpkgs.nix]]: A pinned version of =nixpkgs=, used if none is specified as an
+   argument to [[./default.nix]]
+ - [[./haskell.nix]]: A package set with the =haskellPackages= overlay in
+   [[./default.nix]] applied
+ - [[./json]]: JSON files produced by =nix-prefetch-git=
