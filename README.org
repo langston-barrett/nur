@@ -10,8 +10,8 @@ A [[https://github.com/nix-community/NUR][NUR]].
  - [[./default.nix]]: A normal NUR =default.nix=
  - [[./nixpkgs.nix]]: A pinned version of =nixpkgs=, used if none is specified as an
    argument to [[./default.nix]]
- - [[./haskell.nix]]: A package set with the =haskellPackages= overlay in
-   [[./default.nix]] applied
+ - [[./galois.nix]]: A package set with the Haskell packages of Galois available via
+   =haskellPackages=
  - [[./json]]: JSON files produced by =nix-prefetch-git=
 
 ** packages

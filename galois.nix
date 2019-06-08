@@ -1,6 +1,6 @@
-# * Haskell package set
+# * Galois Haskell package set
 #
-# A package set with (./default.nix).overlays.haskellPackages applied.
+# A package set with (./default.nix).overlays.haskellPackages.galois applied.
 
 { compiler ? "ghc864" }:
 
