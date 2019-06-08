@@ -12,10 +12,11 @@ in import ./nixpkgs.nix { } {
     allowUnfree = true; # https://github.com/GaloisInc/flexdis86/pull/1 # TODO: still necessary?
     allowBroken = true; # GHC 8.8.1, bytestring-handle
   };
-  overlays = builtins.trace "here" [
+  overlays = [
     (self: super: { abc = (nur super).abc; })
     (self: super: {
-      haskellPackages = (nur super).overlays.haskellPackages self super;
+      haskellPackages =
+        (nur super).overlays.haskellPackages.galois self super;
     })
   ];
 }

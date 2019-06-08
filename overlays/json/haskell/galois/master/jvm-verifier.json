@@ -1,0 +1,7 @@
+{
+  "url": "ssh://git@github.com/GaloisInc/jvm-verifier",
+  "rev": "0f8ca43dd3eb7667c9176389a8167d985093dc8d",
+  "date": "2019-02-25T22:29:15-08:00",
+  "sha256": "19y0hm5bcx3dbglfrzd7pn5d7pgaq59nsnhxv3n03mrywpp03dy4",
+  "fetchSubmodules": false
+}

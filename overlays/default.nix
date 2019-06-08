@@ -1,12 +1,19 @@
 { compiler  ? "ghc864" }:
 {
-  # Add your overlays here
-  #
-  # my-overlay = import ./my-overlay;
-  haskellPackages = self: super: super.haskellPackages.override {
-    overrides = haskellPackagesNew: haskellPackagesOld: {
-      semantic = super.callPackage ./haskell/semantic/semantic.nix { };
-    } // (import ./semantic.nix super haskellPackagesNew haskellPackagesOld);
+  haskellPackages = {
+
+    # A Haskell package set overlay for building github/semantic
+    semantic = self: super: super.haskellPackages.override {
+      overrides = haskellPackagesNew: haskellPackagesOld:
+        import ./semantic.nix super haskellPackagesNew haskellPackagesOld;
+    };
+
+    # A Haskell package set overlay for building GaloisInc/*
+    galois = self: super: super.haskellPackages.override {
+      overrides = haskellPackagesNew: haskellPackagesOld:
+        (import ./galois.nix super haskellPackagesNew haskellPackagesOld) { };
+    };
   };
+
 }
 
