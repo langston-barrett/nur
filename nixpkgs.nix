@@ -15,4 +15,4 @@ let
     inherit (nixpkgs) rev sha256;
   };
 
-in import src { }
+in import src
