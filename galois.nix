@@ -9,14 +9,26 @@ let nur = pkgs: import ./default.nix { inherit pkgs; };
 
 in import ./nixpkgs.nix { } {
   config = {
-    allowUnfree = true; # https://github.com/GaloisInc/flexdis86/pull/1 # TODO: still necessary?
     allowBroken = true; # GHC 8.8.1, bytestring-handle
   };
-  overlays = [
-    (self: super: { abc = (nur super).abc; })
-    (self: super: {
-      haskellPackages =
-        (nur super).overlays.haskellPackages.galois self super;
-    })
-  ];
+  overlays =
+    # Non-Haskell packages
+    [ (self: super: { abc = (nur super).abc; }) ] ++
+
+    # Packages that need newer versions from Github
+    (let
+      update = name: (self: super: {
+        "${name}" =
+          (nur super).overlays.haskellPackages.${name};
+      });
+    in builtins.map update [ "crackNum" "sbv" "itanium-abi" ]) ++
+
+    # Galois packages
+    (let
+      addGalois = name: (self: super: {
+        haskellPackages =
+          (nur super).overlays.haskellPackages.${name} self super;
+      });
+      galoisPackages = import ./lib/galois-packages.nix;
+    in builtins.map addGalois galoisPackages);
 }

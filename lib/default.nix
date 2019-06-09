@@ -1,6 +1,16 @@
 { pkgs }:
 
 with pkgs.lib; {
+
+  # Add the ABC library to a build, with correct linking
+  addABC = drv: drv.overrideDerivation (oldAttrs: {
+      buildPhase = ''
+        export NIX_LDFLAGS+=" -L${pkgs.abc} -L${pkgs.abc}/lib"
+        ${oldAttrs.buildPhase}
+      '';
+      librarySystemDepends = [ pkgs.abc ];
+  });
+
   haskell =
     let hlib = pkgs.haskell.lib;
     in rec {
@@ -9,7 +19,9 @@ with pkgs.lib; {
     # a JSON describing the git revision and SHA256 to fetch, then calls
     # cabal2nix on the source.
     mk =
-      { haskellPackages }:
+      { haskellPackages
+      , sourceFilesBySuffices ? x: y: x
+      }:
 
       { name
       , json
@@ -31,7 +43,7 @@ with pkgs.lib; {
       in builtins.trace ("mk: " + name)
             (wrapper
             (haskellPackages.callCabal2nix name src { }));
-            
+
     # "Wrappers" to be applied to Haskell package definitions, mostly for the
     # purposes of faster builds.
     wrappers =
@@ -55,4 +67,3 @@ with pkgs.lib; {
       };
   };
 }
-

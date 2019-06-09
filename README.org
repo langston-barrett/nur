@@ -13,9 +13,56 @@ A [[https://github.com/nix-community/NUR][NUR]].
  - [[./galois.nix]]: A package set with the Haskell packages of Galois available via
    =haskellPackages=
  - [[./json]]: JSON files produced by =nix-prefetch-git=
+ - [[./shells]]: Nix shell definitions for a variety of projects I work on
 
 ** packages
 
    - [[./pkgs/abc.nix]]: A version of [[https://github.com/berkeley-abc/abc][the ABC library]]
-   - [WIP] [[./overlays/semantic.nix]]: Haskell package overlays necessary to build
-     [[https://github.com/github/semantic][github/semantic]]
+
+** overlays
+
+*** haskell
+
+    - [[./overlays/updates.nix]]: Versions of Haskell packages from Github which
+      haven't yet made it into upstream nixpkgs.
+
+      - =itanium-abi=
+      - =crackNum=
+      - =sbv=
+
+    - [WIP] [[./overlays/galois.nix]]: Haskell package overlays (written using
+      =extend=) for building the Haskell packages of Galois, Inc. The following
+      packages are available:
+
+      - =abcBridge=
+      - =elf-edit=
+      - =galois-dwarf=
+      - =binary-symbols=
+      - =flexdis86=
+      - =parameterized-utils=
+      - =llvm-pretty=
+      - =llvm-pretty-bc-parser=
+      - =what4=
+      - =crucible=
+      - =crucible-llvm=
+      - =crucible-jvm=
+      - =crucible-saw=
+      - =aig=
+      - =crux=
+      - =crux-llvm=
+      - =jvm-parser=
+      - =jvm-verifier=
+      - =cryptol=
+      - =cryptol-verifier=
+      - =macaw-base=
+      - =macaw-x86=
+      - =macaw-symbolic=
+      - =macaw-x86-symbolic=
+      - =saw-core=
+      - =saw-core-what4=
+      - =saw-core-aig=
+      - =saw-core-sbv=
+      - =saw-script=
+
+    - [WIP] [[./overlays/semantic.nix]]: Haskell package overlays necessary to build
+      [[https://github.com/github/semantic][github/semantic]]
