@@ -14,64 +14,12 @@ let hlib = pkgs.haskell.lib;
       # inherit (pkgs.lib) sourceFilesBySuffices;
     };
     wrappers = lib.haskell.wrappers;
-    # TODO: One can make a string into a path with "./. +", reduce duplication
-    sources =
-      let
-        case = arg: arg."${build}" or arg.master;
-      in {
-        # auto-yasnippet: SPC i S c
-        # ~pkg = case {
-        #   saw    = ./json/haskell/galois/saw/~pkg.json;
-        #   master = ./json/haskell/galois/master/~pkg.json;
-        # };
-        crucible = case {
-          saw    = ./json/haskell/galois/saw/crucible.json;
-          master = ./json/haskell/galois/master/crucible.json;
-        };
-        cryptol = case {
-          saw    = ./json/haskell/galois/saw/cryptol.json;
-          master = ./json/haskell/galois/master/cryptol.json;
-        };
-        cryptol-verifier = case {
-          saw    = ./json/haskell/galois/saw/cryptol-verifier.json;
-          master = ./json/haskell/galois/master/cryptol-verifier.json;
-        };
-        macaw = case {
-          saw    = ./json/haskell/galois/saw/macaw.json;
-          master = ./json/haskell/galois/master/macaw.json;
-        };
-        llvm-pretty = case {
-          saw    = ./json/haskell/galois/saw/llvm-pretty.json;
-          master = ./json/haskell/galois/master/llvm-pretty.json;
-        };
-        parameterized-utils = case {
-          saw    = ./json/haskell/galois/saw/parameterized-utils.json;
-          master = ./json/haskell/galois/master/parameterized-utils.json;
-        };
-        saw-core = case {
-          saw    = ./json/haskell/galois/saw/saw-core.json;
-          master = ./json/haskell/galois/master/saw-core.json;
-        };
-        saw-core-aig = case {
-          saw    = ./json/haskell/galois/saw/saw-core-aig.json;
-          master = ./json/haskell/galois/master/saw-core-aig.json;
-        };
-        saw-core-sbv = case {
-          saw    = ./json/haskell/galois/saw/saw-core-sbv.json;
-          master = ./json/haskell/galois/master/saw-core-sbv.json;
-        };
-        saw-core-what4 = case {
-          saw    = ./json/haskell/galois/saw/saw-core-what4.json;
-          master = ./json/haskell/galois/master/saw-core-what4.json;
-        };
-        sbv = case {
-          saw    = ./json/haskell/galois/saw/sbv.json;
-          master = ./json/haskell/galois/master/sbv.json;
-        };
-      };
+
+    sourceMaster = name: ./. + "/json/haskell/galois/master/${name}.json";
+    sourceCase = name: ./. + "/json/haskell/galois/${build}/${name}.json";
 
     withSubdirs = pname: suffixToSubdir: suffix: mk {
-      json   = sources.${pname};
+      json   = sourceCase "${pname}";
       # name   = pname + maybeSuffix suffix; # TODO: use this
       name   = pname + "-" + suffix;
       repo   = pname;
@@ -79,12 +27,14 @@ let hlib = pkgs.haskell.lib;
     };
 
     # Packages that require no modification
-    fromSource = name: {
+    fromSourceFun = f: name: {
       "${name}" = mk {
         name = "${name}";
-        json = sources."${name}";
+        json = f "${name}";
       };
     };
+    fromSource = fromSourceFun sourceCase;
+    fromMaster = fromSourceFun sourceMaster;
 in {
   aig = mk {
     name = "aig";
@@ -99,17 +49,12 @@ in {
     json   = ./json/haskell/galois/master/flexdis86.json;
   };
 
-  flexdis86 = mk {
-    name = "flexdis86";
-    json = ./json/haskell/galois/master/flexdis86.json;
-  };
-
   abcBridge = wrappers.default
     (super.callPackage ./pkgs/haskell/galois/abcBridge.nix { });
 
   cryptol-verifier = lib.addABC (mk {
     name = "cryptol-verifier";
-    json = sources.cryptol-verifier;
+    json = sourceCase"cryptol-verifier";
   });
 
   elf-edit = mk {
@@ -121,17 +66,6 @@ in {
     name = "dwarf";
     json = ./json/haskell/galois/master/dwarf.json;
   };
-
-  # Hackage version broken
-  jvm-parser = mk {
-    name = "jvm-parser";
-    json = ./json/haskell/galois/master/jvm-parser.json;
-  };
-
-  jvm-verifier = lib.addABC (mk {
-    name = "jvm-verifier";
-    json = ./json/haskell/galois/master/jvm-verifier.json;
-  });
 
   # Tests fail because they lack llvm-as
   llvm-pretty-bc-parser = mk {
@@ -153,10 +87,13 @@ in {
   # The version on Hackage should work, its just not in nixpkgs yet
   parameterized-utils = mk {
     name = "parameterized-utils";
-    json = sources.parameterized-utils;
+    json = sourceCase"parameterized-utils";
     wrapper = wrappers.jailbreakDefault;
   };
 } // fromSource "cryptol"
+  // fromMaster "flexdis86"
+  // fromMaster "jvm-parser"
+  // fromMaster "jvm-verifier"
   //
 
 # ** crucible
@@ -170,7 +107,7 @@ in {
   # A package in a subdirectory of Crucible
   useCrucible = name: mk {
     inherit name;
-    json   = sources.crucible;
+    json   = sourceCase"crucible";
     repo   = "crucible";
     subdir = name;
   };

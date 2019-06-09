@@ -18,8 +18,8 @@ in import ./nixpkgs.nix { } {
     # Packages that need newer versions from Github
     (let
       update = name: (self: super: {
-        "${name}" =
-          (nur super).overlays.haskellPackages.${name};
+        haskellPackages =
+          (nur super).overlays.haskellPackages.${name} self super;
       });
     in builtins.map update [ "crackNum" "sbv" "itanium-abi" ]) ++
 

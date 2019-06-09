@@ -30,7 +30,7 @@ A [[https://github.com/nix-community/NUR][NUR]].
       - =crackNum=
       - =sbv=
 
-    - [WIP] [[./overlays/galois.nix]]: Haskell package overlays (written using
+    - [[./overlays/galois.nix]]: Haskell package overlays (written using
       =extend=) for building the Haskell packages of Galois, Inc. The following
       packages are available:
 
