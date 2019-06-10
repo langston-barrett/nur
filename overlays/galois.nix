@@ -67,12 +67,6 @@ in {
     json = ./json/haskell/galois/master/dwarf.json;
   };
 
-  # Tests fail because they lack llvm-as
-  llvm-pretty-bc-parser = mk {
-    name = "llvm-pretty-bc-parser";
-    json = ./json/haskell/galois/master/llvm-pretty-bc-parser.json;
-  };
-
   llvm-verifier = lib.addABC (mk {
     name = "llvm-verifier";
     json = ./json/haskell/galois/master/llvm-verifier.json;
@@ -94,6 +88,7 @@ in {
   // fromMaster "flexdis86"
   // fromMaster "jvm-parser"
   // fromMaster "jvm-verifier"
+  // fromMaster "llvm-pretty-bc-parser"
   //
 
 # ** crucible
