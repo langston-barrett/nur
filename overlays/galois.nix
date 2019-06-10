@@ -84,10 +84,14 @@ in {
     json = sourceCase"parameterized-utils";
     wrapper = wrappers.jailbreakDefault;
   };
+
+  jvm-verifier = lib.addABC (mk {
+    name = "jvm-verifier";
+    json = ./json/haskell/galois/master/jvm-verifier.json;
+  });
 } // fromSource "cryptol"
   // fromMaster "flexdis86"
   // fromMaster "jvm-parser"
-  // fromMaster "jvm-verifier"
   // fromMaster "llvm-pretty-bc-parser"
   //
 
