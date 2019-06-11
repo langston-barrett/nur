@@ -30,5 +30,13 @@ in import ./nixpkgs.nix { } {
           (nur super).overlays.haskellPackages.${name} self super;
       });
       galoisPackages = import ./lib/galois-packages.nix;
-    in builtins.map addGalois galoisPackages);
+    in builtins.map addGalois galoisPackages) ++
+
+    # local packages
+    (let
+      addLocal = name: (self: super: {
+        haskellPackages =
+          (nur super).overlays.localHaskellPackages.${name} self super;
+      });
+    in builtins.map addLocal [ "crucible-llvm" "what4" ]);
 }

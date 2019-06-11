@@ -28,4 +28,21 @@
         };
         galoisPackages = import ../lib/galois-packages.nix;
       in builtins.map addGalois galoisPackages));
+
+  localHaskellPackages =
+    pkgs.lib.zipAttrsWith (name: vals: builtins.elemAt vals 0)
+      (let
+        update = name: {
+          "${name}" = self: super: super.haskellPackages.extend (new: old: {
+            "${name}" = (import ./local.nix super new old).${name};
+          });
+        };
+      in builtins.map update [
+           "crucible"
+           "crucible-jvm"
+           "crucible-llvm"
+           "what4"
+           "parameterized-utils"
+           "saw-script"
+         ]);
 }
