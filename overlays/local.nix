@@ -57,6 +57,7 @@ in with super; {
 (with super; {
   crucible            = alterSrc crucible (../../crucible/crucible);
   crucible-llvm       = alterSrc crucible-llvm (../../crucible/crucible-llvm);
+  crucible-jvm        = alterSrc crucible-jvm (../../crucible/crucible-jvm);
   parameterized-utils = alterSrc parameterized-utils (../parameterized-utils);
   what4               = addDeps what4 (../../crucible/what4) [versions];
   # what4               = alterSrc what4 (../../crucible/what4);
