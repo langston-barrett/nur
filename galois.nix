@@ -38,5 +38,11 @@ in import ./nixpkgs.nix { } {
         haskellPackages =
           (nur super).overlays.localHaskellPackages.${name} self super;
       });
-    in builtins.map addLocal [ "crucible" "crucible-llvm" "crucible-jvm" "what4" ]);
+    in builtins.map addLocal [
+         "crucible"
+         "crucible-llvm"
+         "crucible-jvm"
+         "saw-script"
+         "what4"
+       ]);
 }

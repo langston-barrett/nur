@@ -6,4 +6,5 @@ in {
   crackNum = super.callPackage ./pkgs/haskell/updates/crackNum.nix { };
   sbv = super.callPackage ./pkgs/haskell/updates/sbv.nix { };
   itanium-abi = super.callPackage ./pkgs/haskell/updates/itanium-abi.nix { };
+  th-abstraction = super.callPackage ./pkgs/haskell/updates/th-abstraction.nix { };
 }

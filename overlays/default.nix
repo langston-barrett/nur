@@ -17,7 +17,7 @@
             "${name}" = (import ./updates.nix super new old).${name};
           });
         };
-      in builtins.map update [ "crackNum" "sbv" "itanium-abi" ]) ++
+      in builtins.map update [ "crackNum" "sbv" "itanium-abi" "th-abstraction" ]) ++
       (let
         # Add another haskell package set overlay for a given package in the
         # ./galois.nix file.

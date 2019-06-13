@@ -9,7 +9,6 @@ pkgs: self: super:
 let hlib = pkgs.haskell.lib;
     lib = import ../lib { inherit pkgs; };
     mk = lib.haskell.mk {
-      haskellPackages = super;
       # TODO: "string '/nix/store/yi...-source/' cannot refer to other paths"
       # inherit (pkgs.lib) sourceFilesBySuffices;
     };

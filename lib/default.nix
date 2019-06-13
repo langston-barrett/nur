@@ -19,8 +19,7 @@ with pkgs.lib; {
     # a JSON describing the git revision and SHA256 to fetch, then calls
     # cabal2nix on the source.
     mk =
-      { haskellPackages
-      , sourceFilesBySuffices ? x: y: x
+      { sourceFilesBySuffices ? x: y: x
       }:
 
       { name
@@ -42,7 +41,7 @@ with pkgs.lib; {
 
       in builtins.trace ("mk: " + name)
             (wrapper
-            (haskellPackages.callCabal2nix name src { }));
+            (pkgs.haskellPackages.callCabal2nix name src { }));
 
     # "Wrappers" to be applied to Haskell package definitions, mostly for the
     # purposes of faster builds.
