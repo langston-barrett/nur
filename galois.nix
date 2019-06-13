@@ -19,9 +19,6 @@ in import ./nixpkgs.nix { } {
       (self: super: {
         haskellPackages =
           super.haskellPackages.extend (new: old: {
-            generic-deriving = old.generic-deriving.override {
-              th-abstraction = super.haskellPackages.th-abstraction;
-            };
             th-lift = old.th-lift.override {
               th-abstraction = super.haskellPackages.th-abstraction;
             };
@@ -43,9 +40,12 @@ in import ./nixpkgs.nix { } {
          "sbv"
          "itanium-abi"
 
+         "time-compat" # aeson
+
          "th-abstraction"
          "bifunctors"
          "invariant"
+         "generic-deriving"
        ]) ++
 
     # Galois packages
