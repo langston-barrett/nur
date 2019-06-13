@@ -15,13 +15,38 @@ in import ./nixpkgs.nix { } {
     # Non-Haskell packages
     [ (self: super: { abc = (nur super).abc; }) ] ++
 
+    ([ # Ugh. A lot of stuff can't work with th-abstraction 0.3 yet
+      (self: super: {
+        haskellPackages =
+          super.haskellPackages.extend (new: old: {
+            generic-deriving = old.generic-deriving.override {
+              th-abstraction = super.haskellPackages.th-abstraction;
+            };
+            th-lift = old.th-lift.override {
+              th-abstraction = super.haskellPackages.th-abstraction;
+            };
+            aeson = old.aeson.override {
+              th-abstraction = super.haskellPackages.th-abstraction;
+            };
+          });
+      })
+    ]) ++
+
     # Packages that need newer versions from Github
     (let
       update = name: (self: super: {
         haskellPackages =
           (nur super).overlays.haskellPackages.${name} self super;
       });
-    in builtins.map update [ "crackNum" "sbv" "itanium-abi" ]) ++
+    in builtins.map update [
+         "crackNum"
+         "sbv"
+         "itanium-abi"
+
+         "th-abstraction"
+         "bifunctors"
+         "invariant"
+       ]) ++
 
     # Galois packages
     (let

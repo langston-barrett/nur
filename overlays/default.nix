@@ -11,13 +11,14 @@
           import ./semantic.nix super new old
         );
       }] ++
+      # TODO: de-duplicate with contents of ./updates.nix
       (let
         update = name: {
           "${name}" = self: super: super.haskellPackages.extend (new: old: {
-            "${name}" = (import ./updates.nix super new old).${name};
+            "${name}" = (import ./updates super new old).${name};
           });
         };
-      in builtins.map update [ "crackNum" "sbv" "itanium-abi" "th-abstraction" ]) ++
+      in builtins.map update (import ./updates/packages.nix)) ++
       (let
         # Add another haskell package set overlay for a given package in the
         # ./galois.nix file.

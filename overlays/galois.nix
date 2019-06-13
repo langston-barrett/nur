@@ -78,11 +78,17 @@ in {
   };
 
   # The version on Hackage should work, its just not in nixpkgs yet
-  parameterized-utils = mk {
+  parameterized-utils = (mk {
     name = "parameterized-utils";
     json = sourceCase"parameterized-utils";
     wrapper = wrappers.jailbreakDefault;
-  };
+  });
+  # .override (let tha = (import ./updates.nix pkgs self super).th-abstraction; in {
+  #   # deps of callCabal2nix can't deal with this
+  #   th-abstraction = tha;
+  #   # bifunctors = super.bifunctors.override {th-abstraction = tha;};
+  #   # invariant = super.invariant.override {th-abstraction = tha;};
+  # });
 
   jvm-verifier = lib.addABC (mk {
     name = "jvm-verifier";
