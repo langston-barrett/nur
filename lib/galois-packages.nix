@@ -7,6 +7,8 @@
   "binary-symbols"
   "flexdis86"
 
+  "jvm-parser"
+
   "parameterized-utils"
 
   # llvm-pretty(-bc-parser)
@@ -40,7 +42,6 @@
   "cryptol-verifier"
 
   # JVM
-  "jvm-parser"
   "jvm-verifier"
 
   # SAW
