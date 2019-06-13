@@ -17,18 +17,10 @@
   "what4"
   "crucible"
   "crucible-llvm"
-  "crucible-jvm"
-  "crucible-saw"
   "aig"
   "crux"
+  "crucible-jvm"
   "crux-llvm"
-
-  "jvm-parser"
-  "jvm-verifier"
-
-  # Cryptol
-  "cryptol"
-  "cryptol-verifier"
 
   # Macaw
   "macaw-base"
@@ -36,10 +28,21 @@
   "macaw-symbolic"
   "macaw-x86-symbolic"
 
-  # SAW
+  # SAWCore
   "saw-core"
+  "crucible-saw"
   "saw-core-what4"
   "saw-core-aig"
   "saw-core-sbv"
+
+  # Cryptol
+  "cryptol"
+  "cryptol-verifier"
+
+  # JVM
+  "jvm-parser"
+  "jvm-verifier"
+
+  # SAW
   "saw-script"
 ]
