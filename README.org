@@ -23,12 +23,19 @@ A [[https://github.com/nix-community/NUR][NUR]].
 
 *** haskell
 
-    - [[./overlays/updates.nix]]: Versions of Haskell packages from Github which
-      haven't yet made it into upstream nixpkgs.
+    - [[./overlays/updates/default.nix]]: Versions of Haskell packages from Github
+      which haven't yet made it into upstream nixpkgs.
 
       - =itanium-abi=
-      - =crackNum=
       - =sbv=
+        - =crackNum= (necessary for newer =sbv=)
+      - =th-abstraction= (necessary for =parameterized-utils=)
+        - =time-compat=
+        - =aeson= (necessary for newer =th-abstraction=)
+        - =bifunctors= (necessary for newer =th-abstraction=)
+        - =invariant= (necessary for newer =th-abstraction=)
+        - =generic-deriving= (necessary for newer =th-abstraction=)
+        - =lens= (necessary for newer =th-abstraction=)
 
     - [[./overlays/galois.nix]]: Haskell package overlays (written using
       =extend=) for building the Haskell packages of Galois, Inc. The following
@@ -66,3 +73,9 @@ A [[https://github.com/nix-community/NUR][NUR]].
 
     - [WIP] [[./overlays/semantic.nix]]: Haskell package overlays necessary to build
       [[https://github.com/github/semantic][github/semantic]]
+
+** shake
+
+   There is a =shake= build system in place for automating common tasks.
+
+   Try =./shake.sh --help=.

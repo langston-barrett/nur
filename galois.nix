@@ -46,6 +46,8 @@ in import ./nixpkgs.nix { } {
          "bifunctors"
          "invariant"
          "generic-deriving"
+         "aeson"
+         "lens"
        ]) ++
 
     # Galois packages
