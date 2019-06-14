@@ -7,5 +7,8 @@ rec {
   overlays = import ./overlays { inherit pkgs lib; }; # nixpkgs overlays
 
   abc = pkgs.callPackage ./pkgs/abc.nix { };
+  jsonlines = pkgs.callPackage ./pkgs/jsonlines.nix {
+    inherit (pkgs.pythonPackages) buildPythonPackage fetchPypi six;
+  };
 }
 

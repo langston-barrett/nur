@@ -18,6 +18,7 @@ A [[https://github.com/nix-community/NUR][NUR]].
 ** packages
 
    - [[./pkgs/abc.nix]]: A version of [[https://github.com/berkeley-abc/abc][the ABC library]]
+   - [[./pkgs/jsonlines.nix]]: Python =jsonlines= library
 
 ** overlays
 
