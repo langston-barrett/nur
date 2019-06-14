@@ -6,4 +6,7 @@ let hlib = pkgs.haskell.lib;
       "${name}" = hlib.dontCheck (hlib.doJailbreak (super.callPackage (./. + "/../pkgs/haskell/updates/${name}.nix") { }));
     };
 in pkgs.lib.zipAttrsWith (name: vals: builtins.elemAt vals 0)
-                         (builtins.map update (import ./packages.nix))
+                         ((builtins.map update (import ./packages.nix)) ++
+                         [ { hpack = hlib.dontCheck super.hpack;
+                           }
+                         ])

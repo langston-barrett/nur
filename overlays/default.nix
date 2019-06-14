@@ -18,7 +18,7 @@
             "${name}" = (import ./updates super new old).${name};
           });
         };
-      in builtins.map update (import ./updates/packages.nix)) ++
+      in builtins.map update (import ./updates/packages.nix ++ ["hpack"])) ++
       (let
         # Add another haskell package set overlay for a given package in the
         # ./galois.nix file.

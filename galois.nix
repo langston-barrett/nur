@@ -42,11 +42,15 @@ in import ./nixpkgs.nix { } {
 
          "time-compat" # aeson
 
+         "hpack"
          "th-abstraction"
+         "th-lift"
          "bifunctors"
          "invariant"
          "generic-deriving"
+         "deriving-compat"
          "aeson"
+         "microlens-th"
          "lens"
        ]) ++
 
