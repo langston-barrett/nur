@@ -43,7 +43,12 @@ main =
       need [galoisNix]
 
       (Exit code, Stdout out, Stderr err) <-
-        cmd "nix-build" [ galoisNix, "-A", "haskellPackages." ++ pkg ]
+        cmd "nix-build" [ galoisNix
+                        , "-A"
+                        , "haskellPackages." ++ pkg
+                        , "--out-link"
+                        , ".build/" ++ pkg
+                        ]
 
       -- Write a log when the build fails
       when (code /= ExitSuccess) $ do

@@ -2,18 +2,23 @@
 #
 # A package set with (./default.nix).overlays.haskellPackages.galois applied.
 
-{ compiler ? "ghc864" }:
+{ compiler ? "ghc881" }:
+# { compiler ? "ghc864" }:
 
 # Get the set of overlays from ./default.nix
 let nur = pkgs: import ./default.nix { inherit pkgs; };
 
-in import ./nixpkgs.nix { } {
+in import ./nixpkgs.nix { path = ./json/nixpkgs/master.json; } {
+# in import ./nixpkgs.nix { } {
   config = {
     allowBroken = true; # GHC 8.8.1, bytestring-handle
   };
   overlays =
     # Non-Haskell packages
     [ (self: super: { abc = (nur super).abc; }) ] ++
+
+    # GHC version
+    [ (self: super: { haskellPackages = super.haskell.packages."${compiler}"; }) ] ++
 
     ([ # Ugh. A lot of stuff can't work with th-abstraction 0.3 yet
       (self: super: {
