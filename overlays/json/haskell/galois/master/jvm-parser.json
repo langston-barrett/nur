@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/GaloisInc/jvm-parser",
-  "rev": "225b738d75b8c71025fcdb59a07bc608aaa55367",
-  "date": "2019-04-12T12:29:30-07:00",
-  "sha256": "0lmaxwdxb3jb5y8al4mdxlbcc28345svcxmrbxpbnb2m8arfkkgx",
+  "rev": "5368a84117dc28e0002003e8d8a491dd8756b421",
+  "date": "2019-06-17T09:51:18-07:00",
+  "sha256": "12iwi1izw3xvlk8m21pahv7z220b3b3zgcr502cbdnfim69mjfjq",
   "fetchSubmodules": false
 }
