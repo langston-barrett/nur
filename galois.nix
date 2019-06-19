@@ -2,7 +2,7 @@
 #
 # A package set with (./default.nix).overlays.haskellPackages.galois applied.
 
-{ compiler ? "ghc881" }:
+{ compiler ? "ghc864" }:
 # { compiler ? "ghc864" }:
 
 # Get the set of overlays from ./default.nix
