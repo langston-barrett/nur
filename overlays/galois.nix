@@ -2,7 +2,9 @@
 
 pkgs: self: super:
 
-{ build ? "master" }:
+{ build ? "master"
+, profiling ? false
+}:
 
 # ** utilities
 
@@ -11,6 +13,7 @@ let hlib = pkgs.haskell.lib;
     mk = lib.haskell.mk {
       # TODO: "string '/nix/store/yi...-source/' cannot refer to other paths"
       # inherit (pkgs.lib) sourceFilesBySuffices;
+      defaultWrapper = if profiling then wrappers.good else wrappers.default;
     };
     wrappers = lib.haskell.wrappers;
 
@@ -155,7 +158,7 @@ in {
   saw-script = lib.addABC (mk {
     name    = "saw-script";
     json    = ./json/haskell/galois/master/saw-script.json;
-    wrapper = wrappers.exe;
+    # wrapper = wrappers.exe;
   });
 }) // fromSource "saw-core"
    // fromSource "saw-core-aig"

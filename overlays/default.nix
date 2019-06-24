@@ -1,6 +1,7 @@
 { pkgs
 , lib
 , compiler  ? "ghc864"
+, profiling ? false
 }:
 {
   haskellPackages =
@@ -24,7 +25,10 @@
         # ./galois.nix file.
         addGalois = name: {
           "${name}" = self: super: super.haskellPackages.extend (new: old: {
-            "${name}" = ((import ./galois.nix super new old) { }).${name};
+            "${name}" =
+              ((import ./galois.nix super new old) {
+                inherit profiling;
+              }).${name};
           });
         };
         galoisPackages = import ../lib/galois-packages.nix;

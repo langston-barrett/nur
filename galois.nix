@@ -2,11 +2,13 @@
 #
 # A package set with (./default.nix).overlays.haskellPackages.galois applied.
 
-{ compiler ? "ghc864" }:
+{ compiler ? "ghc864"
+, profiling ? false
+}:
 # { compiler ? "ghc864" }:
 
 # Get the set of overlays from ./default.nix
-let nur = pkgs: import ./default.nix { inherit pkgs; };
+let nur = pkgs: import ./default.nix { inherit pkgs profiling; };
 
 in import ./nixpkgs.nix { path = ./json/nixpkgs/master.json; } {
 # in import ./nixpkgs.nix { } {

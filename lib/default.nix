@@ -20,6 +20,7 @@ with pkgs.lib; {
     # cabal2nix on the source.
     mk =
       { sourceFilesBySuffices ? x: y: x
+      , defaultWrapper ? wrappers.default
       }:
 
       { name
@@ -27,7 +28,7 @@ with pkgs.lib; {
       , owner ? "GaloisInc"
       , repo ? name
       , subdir ? ""
-      , wrapper ? wrappers.default
+      , wrapper ? defaultWrapper
       }:
 
       let
@@ -61,8 +62,11 @@ with pkgs.lib; {
         jailbreakDefault = x: wrappers.jailbreak (wrappers.default x);
         #
         fast    = x: disableOptimization (notest x);
-        good    = x: hlib.dontCheck (nocov x);
+        good    = x:
+          hlib.enableLibraryProfiling
+            (hlib.enableExecutableProfiling (hlib.dontCheck (nocov x)));
         default = notest;
+        # default = notest;
       };
   };
 }
