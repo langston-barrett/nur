@@ -14,4 +14,5 @@
   "deriving-compat"
   "microlens-th"
   "lens"
+  "config-schema"
 ]

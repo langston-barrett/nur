@@ -37,6 +37,7 @@ A [[https://github.com/nix-community/NUR][NUR]].
         - =invariant= (necessary for newer =th-abstraction=)
         - =generic-deriving= (necessary for newer =th-abstraction=)
         - =lens= (necessary for newer =th-abstraction=)
+      - =config-schema= (necessary for =crux=)
 
     - [[./overlays/galois.nix]]: Haskell package overlays (written using
       =extend=) for building the Haskell packages of Galois, Inc. The following
