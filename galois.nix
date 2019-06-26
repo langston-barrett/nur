@@ -79,8 +79,8 @@ in import ./nixpkgs.nix { path = ./json/nixpkgs/master.json; } {
           (nur super).overlays.localHaskellPackages.${name} self super;
       });
     in builtins.map addLocal [
-         # "crucible"
-         # "crucible-llvm"
+         "crucible"
+         "crucible-llvm"
          # "crucible-jvm"
          # "saw-script"
          # "what4"

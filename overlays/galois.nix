@@ -114,7 +114,7 @@ in {
   # A package in a subdirectory of Crucible
   useCrucible = name: mk {
     inherit name;
-    json   = sourceCase"crucible";
+    json   = sourceCase "crucible";
     repo   = "crucible";
     subdir = name;
   };

@@ -1,7 +1,7 @@
 {
-  "url": "https://github.com/GaloisInc/crucible",
-  "rev": "a3c7903936e80331389c02a572989ee73e9fe476",
-  "date": "2019-06-19T21:57:38-07:00",
-  "sha256": "1nvzg4znyhk5xf1vw8hhlas1a547kmwf2j7z6f1wqqmkcqji99if",
+  "url": "https://github.com/siddharthist/crucible",
+  "rev": "0b03606731185ace10a1abc329705b81fe97cfe1",
+  "date": "2019-06-25T15:05:25-07:00",
+  "sha256": "1013fiqlxhs9njni3mbhkmyb1bq45vqixq742g5qk9aqjgi5ml8l",
   "fetchSubmodules": false
 }
