@@ -65,7 +65,7 @@ with pkgs.lib; {
         good    = x:
           hlib.enableLibraryProfiling
             (hlib.enableExecutableProfiling (hlib.dontCheck (nocov x)));
-        default = notest;
+        default = good;
         # default = notest;
       };
   };
