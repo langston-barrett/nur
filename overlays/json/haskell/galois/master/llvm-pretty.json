@@ -1,7 +1,7 @@
 {
-  "url": "ssh://git@github.com/elliottt/llvm-pretty",
-  "rev": "41d3850e202a35d92bbdd7319aebf3995bcfe0e0",
-  "date": "2019-01-17T15:56:06-08:00",
-  "sha256": "0gjkpfzmbr055njax8rc29jna3bdp132bykg1j115623qi933jka",
+  "url": "https://github.com/elliottt/llvm-pretty",
+  "rev": "3698e40fe99a37548ea18a5fab51ac3f8d48b4ed",
+  "date": "2019-07-23T08:07:12-07:00",
+  "sha256": "03s1m65g2mm2jilcg4xsg85ryl5y12cgpdhz3ckgqn19mq1ds9d7",
   "fetchSubmodules": false
 }
