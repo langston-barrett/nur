@@ -1,7 +1,7 @@
 {
-  "url": "https://github.com/GaloisInc/saw-script",
-  "rev": "58e71d5b76cf0c78cdd05b48e2ce80d73bc432ba",
-  "date": "2019-07-02T09:04:21-07:00",
-  "sha256": "0dxrkakxz9ccj61b4l2cwgrvm0gvihp3iyy6x71ah0yg86h2vplw",
+  "url": "https://github.com/siddharthist/saw-script",
+  "rev": "9d76dc03a97fa4b7727109f6cd38de1535266619",
+  "date": "2019-07-24T15:27:21-07:00",
+  "sha256": "0q3sy403m0aarwcvdks80v9x77l7q5kbmwbap8vynq185i2vf3l3",
   "fetchSubmodules": false
 }
