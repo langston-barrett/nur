@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/elliottt/llvm-pretty",
-  "rev": "3698e40fe99a37548ea18a5fab51ac3f8d48b4ed",
-  "date": "2019-07-23T08:07:12-07:00",
-  "sha256": "03s1m65g2mm2jilcg4xsg85ryl5y12cgpdhz3ckgqn19mq1ds9d7",
+  "rev": "47f15440e6d6afc657249469cd74bf4bc08dd433",
+  "date": "2019-07-26T14:51:51-07:00",
+  "sha256": "0a5x4j7xby60dlcf6c42ll014sgy302jg04sqvs8yrg0qf6ggl23",
   "fetchSubmodules": false
 }
