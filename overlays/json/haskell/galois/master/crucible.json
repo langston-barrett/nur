@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/siddharthist/crucible",
-  "rev": "431aedf0c3c9ae357f9da829a30cfa68aa054bef",
-  "date": "2019-07-24T16:25:30-07:00",
-  "sha256": "1518wbmw2rlg9asgd729fdbbgmm5xy7il3gaai2nwz9cg6xc88rx",
+  "rev": "568844be8c610694b8048d018271810106b187b7",
+  "date": "2019-07-30T16:47:01-07:00",
+  "sha256": "1ch6wrp46lnvmv10ji0d644pk0a4kir33nz3sqhmb21shh7nppj3",
   "fetchSubmodules": false
 }
