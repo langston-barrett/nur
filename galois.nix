@@ -84,5 +84,13 @@ in import ./nixpkgs.nix { path = ./json/nixpkgs/master.json; } {
          # "crucible-jvm"
          # "saw-script"
          # "what4"
-       ]);
+       ]) ++
+
+    [(self: super: {
+      s2n = super.callPackage ./pkgs/s2n.nix {
+        inherit (super.haskellPackages) saw-script;
+      };
+    })];
+
 }
+
