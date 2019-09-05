@@ -14,4 +14,5 @@ rec {
     inherit (pkgs.pythonPackages) buildPythonPackage fetchPypi six;
   };
   scalastyle = pkgs.callPackage ./pkgs/scalastyle.nix { };
+  worgle = pkgs.callPackage ./pkgs/worgle.nix { };
 }
