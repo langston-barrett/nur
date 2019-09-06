@@ -27,5 +27,6 @@ in stdenv.mkDerivation {
   meta = {
     homepage    = "https://github.com/OrgTangle/Worgle";
     platforms   = stdenv.lib.platforms.unix;
+    license     = stdenv.lib.licenses.publicDomain;
   };
 }
