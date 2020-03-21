@@ -13,6 +13,8 @@ rec {
   jsonlines = pkgs.callPackage ./pkgs/jsonlines.nix {
     inherit (pkgs.pythonPackages) buildPythonPackage fetchPypi six;
   };
+  shell-hydra = pkgs.callPackage ./sub/shell-hydra/default.nix { };
   scalastyle = pkgs.callPackage ./pkgs/scalastyle.nix { };
+  kmonad = pkgs.haskell.packages.ghc865.callPackage ./pkgs/kmonad.nix { };
   worgle = pkgs.callPackage ./pkgs/worgle.nix { };
 }

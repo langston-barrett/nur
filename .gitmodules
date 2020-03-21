@@ -1,0 +1,3 @@
+[submodule "sub/shell-hydra"]
+	path = sub/shell-hydra
+	url = https://github.com/langston-barrett/shell-hydra
