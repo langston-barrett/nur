@@ -1,5 +1,6 @@
 { pkgs ? import ./nixpkgs.nix { } { }
 , profiling ? false
+, pythonPackages ? pkgs.python37Packages
 }:
 
 rec {
@@ -11,6 +12,7 @@ rec {
   abc = pkgs.callPackage ./pkgs/abc.nix { };
   constexpr-everything = pkgs.callPackage ./pkgs/constexpr-everything.nix { };
   factpp = pkgs.callPackage ./pkgs/fact.nix { };
+  orgparse = pythonPackages.callPackage ./pkgs/orgparse.nix { };
   jsonlines = pkgs.callPackage ./pkgs/jsonlines.nix {
     inherit (pkgs.pythonPackages) buildPythonPackage fetchPypi six;
   };
