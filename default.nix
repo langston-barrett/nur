@@ -21,6 +21,7 @@ rec {
   kmonad = pkgs.haskell.packages.ghc865.callPackage ./pkgs/kmonad.nix { };
   worgle = pkgs.callPackage ./pkgs/worgle.nix { };
 
+  blight = pythonPackages.callPackage ./pkgs/blight.nix { };
   mbuild = pythonPackages.callPackage ./pkgs/mbuild.nix { };
   xed = pkgs.callPackage ./pkgs/xed.nix { inherit mbuild; };
   pyxed = pythonPackages.callPackage ./pkgs/pyxed.nix { inherit xed; };
