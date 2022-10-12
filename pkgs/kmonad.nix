@@ -1,26 +1,26 @@
-{ mkDerivation, base, bytestring, cereal, containers, exceptions
-, hashable, lens, megaparsec, monad-logger, mtl
-, optparse-applicative, process, stdenv, text, time, unagi-chan
-, unix, unliftio, unordered-containers
-, fetchFromGitHub
+{ fetchFromGitHub, mkDerivation, base, cereal, hspec, hspec-discover, lens, lib
+, megaparsec, mtl, optparse-applicative, resourcet, rio
+, template-haskell, time, unix, unliftio
 }:
 mkDerivation {
   pname = "kmonad";
-  version = "0.2.0";
+  version = "0.4.1";
+  doHaddock = false;
   src = fetchFromGitHub {
-    owner = "david-janssen";
+    owner = "kmonad";
     repo = "kmonad";
-    rev = "0.3.0";
-    sha256 = "1g40nkpldih6h1rlxjx5yf9iavr3qs1f2b6j0gd8135p5hkg8d8n";
-  }; 
-  isLibrary = false;
+    rev = "0.4.1";
+    sha256 = "TXpyXK+2Fa5mhl6T9PVtgRDdsuTEkBk86Pbn3T9A6OY=";
+  };
+  isLibrary = true;
   isExecutable = true;
   libraryHaskellDepends = [
-    base bytestring cereal containers exceptions hashable lens
-    megaparsec monad-logger mtl optparse-applicative process text time
-    unagi-chan unix unliftio unordered-containers
+    base cereal lens megaparsec mtl optparse-applicative resourcet rio
+    template-haskell time unix unliftio
   ];
   executableHaskellDepends = [ base ];
+  testHaskellDepends = [ base hspec ];
+  testToolDepends = [ hspec-discover ];
   description = "Advanced keyboard remapping utility";
-  license = stdenv.lib.licenses.mit;
+  license = lib.licenses.mit;
 }
